@@ -1,0 +1,87 @@
+.leaderboard-container {
+  text-align: center;
+  
+  /* background: url('https://png.pngtree.com/thumb_back/fh260/background/20210207/pngtree-black-background-light-simple-image_556933.jpg') no-repeat center center; */
+  background-size: cover; 
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  width: 100vw; 
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+}
+
+  
+  h1 {
+    margin:40px 10px;
+    color: thistle;
+  }
+  
+  .leaderboard-table {
+    width: 60%;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto; 
+}
+
+  
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .leaderboard-table th {
+    background-color: #333;
+    color: white;
+  }
+  
+  .leaderboard-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+ 
+  .back-link{
+    color:azure;
+    font-size: 24px;
+  }
+  .back-link:hover {
+    color: #a27d17; 
+    text-decoration: underline;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .leaderboard-table {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .back-link {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboard-table {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .leaderboard-table th, .leaderboard-table td {
+    padding: 5px;
+  }
+
+  .back-link {
+    font-size: 16px;
+  }
+}

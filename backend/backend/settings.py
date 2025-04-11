@@ -20,12 +20,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l_boql@b@r3&em$!ej2=x3h#re=m#@7-!8%1=-3u8-2_j9(_'
+SECRET_KEY = 'django-insecure-l_boql@*b@r3&em*$!ej2=x3h#re=m#@7-!8%1=-3u8-2_j9(_'
+import os
+
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG=True
 
-ALLOWED_HOSTS = ["*"]
+
+# ALLOWED_HOSTS = ['https://treeversebackend-production.up.railway.app', "http://localhost:3000"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'innoverse-25.vercel.app', 'treeverse.arhn.in', 'innoverse.arhn.in','innoverse-backend.up.railway.app']
+
+
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000',"http://localhost:3000", "https://treeverse.arhn.in", 'https://innoverse.arhn.in','https://innoverse-backend.up.railway.app']
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://treeversebackend-production.up.railway.app",
+#     "http://localhost:3000",  # For local frontend
+# ]
 
 
 # Application definition
@@ -43,7 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-     "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,9 +64,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [ 'http://127.0.0.1:8000',"http://localhost:3000", 'https://treeverse.arhn.in', 'https://innoverse-25.vercel.app', 'https://innoverse.arhn.in', 'https://innoverse-backend.up.railway.app']
+# CORS_ALLOWED_ORIGINS = [
+#     "https://treeversebackend-production.up.railway.app",
+#     "http://localhost:3000",  # Adjust as needed
+# ]
+# CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -121,7 +141,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -25,3 +25,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),  # Keep this
     path("", include("leaderboard.urls")),  # Redirect root URL to a JSON response
 ]
+
+
