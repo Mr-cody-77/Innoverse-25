@@ -38,7 +38,7 @@ function WinnerPage() {
       const winner_name = localStorage.getItem("name");
 
       // Check if model is empty before posting
-      fetch("https://treeversebackend-production.up.railway.app/api/winner/")
+      fetch("https://sae-innoverse-backend.onrender.com/api/winner/")
         .then((response) => response.json())
         .then((data) => {
           if (data.length > 0 && data[0].name) {
@@ -48,7 +48,7 @@ function WinnerPage() {
             setMessage(`Passcode already claimed by ${data[0].name}`);
           } else {
             // Post winner if model is empty
-            fetch(`https://treeversebackend-production.up.railway.app/api/winner/`, {
+            fetch(`https://sae-innoverse-backend.onrender.com/api/winner/`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

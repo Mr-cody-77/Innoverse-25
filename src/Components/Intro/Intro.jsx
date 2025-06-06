@@ -26,7 +26,7 @@ const Intro = () => {
         // Save email and name to localStorage
         localStorage.setItem("name", userInfo.name);
         const player_name= userInfo.name;
-        const checkResponse = await fetch("https://innoverse-backend.up.railway.app/api/player/");
+        const checkResponse = await fetch("https://sae-innoverse-backend.onrender.com/api/player/");
         if (!checkResponse.ok) throw new Error("Error fetching player data");
   
         const players = await checkResponse.json();
@@ -35,7 +35,7 @@ const Intro = () => {
         
         if (!playerExists) {
           // If the player does not exist, add them
-          await fetch("https://innoverse-backend.up.railway.app/api/player/", {
+          await fetch("https://sae-innoverse-backend.onrender.com/api/player/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

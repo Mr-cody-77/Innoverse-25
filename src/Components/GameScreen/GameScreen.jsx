@@ -57,7 +57,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
           return;
         }
   
-        const response = await fetch("https://treeversebackend-production.up.railway.app/api/player/");
+        const response = await fetch("https://sae-innoverse-backend.onrender.com/api/player/");
         if (!response.ok) {
           throw new Error("Failed to fetch player status");
         }
@@ -158,13 +158,13 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
           navigate("/riddles");
           alert("You have collected all the keys. Now you can proceed to the next round.");
           
-          fetch("https://treeversebackend-production.up.railway.app/api/player/")
+          fetch("https://sae-innoverse-backend.onrender.com/api/player/")
             .then((response) => response.json())
             .then((players) => {
               const player = players.find((p) => p.name === player_name);
   
               if (player) {
-                fetch(`https://treeversebackend-production.up.railway.app/api/player/${player.id}/`, {
+                fetch(`https://sae-innoverse-backend.onrender.com/api/player/${player.id}/`, {
                   method: "DELETE",
                   headers: { "Content-Type": "application/json" },
                 })
@@ -172,7 +172,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
                     if (!res.ok) throw new Error("Failed to delete previous player entry");
                     // console.log("Previous player entry deleted successfully.");
   
-                    return fetch("https://treeversebackend-production.up.railway.app/api/player/", {
+                    return fetch("https://sae-innoverse-backend.onrender.com/api/player/", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ name: player_name, is_complete: true, score: newScore }),
@@ -184,7 +184,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
                   })
                   .catch((error) => console.error("Error updating player status:", error));
               } else {
-                fetch("https://treeversebackend-production.up.railway.app/api/player/", {
+                fetch("https://sae-innoverse-backend.onrender.com/api/player/", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ name: player_name, is_complete: true, score: newScore }),
@@ -200,7 +200,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
 
             
   
-          fetch("https://treeversebackend-production.up.railway.app/api/leaderboard/", {
+          fetch("https://sae-innoverse-backend.onrender.com/api/leaderboard/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: player_name, time: Date.now() - startTime }),
